@@ -20,7 +20,7 @@ Skeletor has <b>no external dependencies</b> and is built exclusively with what 
 
 Add the SkeletorProvider component as the (or one of) top wrapper of your application like in the following example:
 
-```javascript
+```jsx
 /// index.js
 const App = () => {
   return (
@@ -80,7 +80,7 @@ Example: `PostScript name: "MagnatHead-Light" --> assets/fonts/MagnatHead-Light.
 
 This provides you with proper font names in Intellisense when used, like in the following examples:
 
-```javascript
+```jsx
 // Sets the default font in the Text component to Helvetica
 <SkeletorProvider defaultFont="Helvetica">...</SkeletorProvider>
 
