@@ -19,17 +19,17 @@ This works on iOS only, Android does this by default with android:windowSoftInpu
 	{(onInputFocus) => (
 		...
 		<Input
-		keyboardType="email-address"
-		returnKeyType="next"
-		placeholder="Your e-mail address"
-		label="E-mail Address"
-		emptyMessage="You must enter an e-mail."
-		errorMessage="E-mail is invalid."
-		value={state.email}
-		valid={validation.email}
-		onFocus={onInputFocus}
-		onChangeText={(text) =>  update("email", text)}
-		onSubmitEditing={() =>  passwordRef.current?.focus()}
+			keyboardType="email-address"
+			returnKeyType="next"
+			placeholder="Your e-mail address"
+			label="E-mail Address"
+			emptyMessage="You must enter an e-mail."
+			errorMessage="E-mail is invalid."
+			value={state.email}
+			valid={validation.email}
+			onFocus={onInputFocus}
+			onChangeText={(text) =>  update("email", text)}
+			onSubmitEditing={() =>  passwordRef.current?.focus()}
 		/>
 		...
 	)}
