@@ -122,24 +122,33 @@ useEffect(() => {
 
 ## Looping animations
 
-Whatever animation you create, just wrap it in `loopAnimation` and it'll loop itself. You can start it as you would any other animation.
+Loop animations allow you to continuously repeat an animation sequence indefinitely. This is perfect for creating loading spinners, rotating elements, pulsing effects, or any other animation that needs to run continuously. The `useLoopAnimation` hook wraps any animation sequence and automatically restarts it when it completes.
 
-### Usage
+You can pass either a predefined sequence or create the sequence inline:
 
 ```javascript
-// You can use static utilities like animateParallel, animateSequence, animateStagger to create animations inside the useLoopAnimationCall OR you can pass in an animation created separately as a parameter.
-const element1 = useLoopAnimation(
-  animateParallel({
-    opacity: [0, 1],
-    translateX: [20, 0],
-    translateY: [20, 0],
-  })
-);
+export const Component: React.FC = () => {
+  // Option 1: Define the sequence separately
+  const sequence = useAnimateSequence(
+    { rotation: ["0deg", "360deg"] },
+    { duration: 1000, easing: Easing.linear }
+  );
+  const rotate = useLoopAnimation(sequence);
 
-// OR
+  // Option 2: Create the sequence inline
+  const rotate = useLoopAnimation(
+    animateSequence(
+      { rotation: ["0deg", "360deg"] },
+      { duration: 1000, easing: Easing.linear }
+    )
+  );
 
-const transition = useAnimateParallel({ opacity: [0, 1] });
-const looped = useLoopAnimation(transition);
+  useEffect(() => {
+    rotate.start();
+  }, []);
+
+  return <Block animations={rotate.animations}>...</Block>;
+};
 ```
 
 :::note
